@@ -3,4 +3,12 @@ __pycache__/
 *.pyo
 *.pyd
 *.env
-.venv/
+
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
