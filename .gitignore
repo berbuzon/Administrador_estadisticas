@@ -1,14 +1,65 @@
-__pycache__/
+# --- Python bytecode & caches ---
+**/__pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-*.env
+*.pyc
+*.pyd
 
-
-
-# Environments
-.env
-.venv
-env/
+# --- Virtual envs ---
+.venv/
 venv/
 ENV/
+env/
+
+# --- Env files ---
+.env
+.env.*            # .env.local, .env.dev, etc.
+!.env.example     # permite versionar la plantilla
+
+# --- Packages / build artifacts ---
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# --- Test / tooling caches ---
+.pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.cache/
+
+# --- Editors / OS junk ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Logs & runtime junk ---
+*.log
+logs/
+*.pid
+
+# --- Data (ajusta según tu repo) ---
+data/
+datasets/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.sqlite
+*.db
+
+# --- Notebooks checkpoints ---
+.ipynb_checkpoints/
+
+# --- Local configs opcionales ---
+*.local.json
