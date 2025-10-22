@@ -1,4 +1,4 @@
-"""Utilidades de compatibilidad para importaciones legacy."""
+"""Utilidades compartidas para el proyecto."""
 
 from .model_utils import ModelUtils
 
