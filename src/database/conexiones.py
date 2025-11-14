@@ -1,21 +1,23 @@
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
 from config.settings import SQLServerConfig, MySQLConfig
-# from sqlalchemy import text  # Necesario para ejecutar queries
+
+# ==========================
+# 1. Motores originales — NO se tocan
+# ==========================
 
 def conectar_sqlserver():
-    # Construye la cadena de conexión para SQL Server usando f-strings
     connection_string = (
         f"mssql+pyodbc://{SQLServerConfig.SERVER}/{SQLServerConfig.DB}?"
         f"driver={SQLServerConfig.DRIVER.replace(' ', '+')}&"
         f"trusted_connection={SQLServerConfig.TRUSTED_CONNECTION}"
     )
-    # Crea y retorna un motor SQLAlchemy con la cadena de conexión
     return create_engine(connection_string)
 
 def conectar_mysql():
-    # Conexión MySQL con parámetros optimizados
     engine = create_engine(
-        f"mysql+pymysql://{MySQLConfig.USER}:{MySQLConfig.PASSWORD}@{MySQLConfig.HOST}/{MySQLConfig.DB}",
+        f"mysql+pymysql://{MySQLConfig.USER}:{MySQLConfig.PASSWORD}"
+        f"@{MySQLConfig.HOST}/{MySQLConfig.DB}",
         pool_size=5,
         pool_recycle=3600,
         connect_args={
@@ -24,3 +26,29 @@ def conectar_mysql():
         }
     )
     return engine
+
+
+# ==========================
+# 2. Agregado para FastAPI + ORM
+# ==========================
+
+# Elegí acá el motor que la API va a usar
+engine = conectar_mysql()
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
+# Base ORM
+Base = declarative_base()
+
+
+# Dependency para FastAPI
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
