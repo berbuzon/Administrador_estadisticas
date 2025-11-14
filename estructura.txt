@@ -1,0 +1,27 @@
+Administrador_estadisticas/
+├── .env
+├── .env.example
+├── .gitignore
+│   ├── __init__.cpython-313.pyc
+│   ├── __init__.py
+│   ├── settings.py
+├── Pasos generador README.md.txt
+├── README.md
+├── src/
+│   ├── __init__.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── conexiones.py
+│   │   ├── models_manual.py
+│   ├── demo/
+│   │   ├── __init__.cpython-313.pyc
+│   │   ├── __init__.py
+│   │   ├── demo_manual.py
+│   ├── main.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── generate_readme.py
+│   │   ├── model_utils.py
+│   │   ├── query_utils.py
+│   │   ├── storage_utils.py
+│   │   ├── update_structure.py
