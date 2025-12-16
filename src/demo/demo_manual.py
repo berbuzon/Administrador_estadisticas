@@ -1,5 +1,5 @@
 from src.utils.model_utils import ModelUtils
-from src.database.models_manual import RazonSocial, Institucion
+from src.models.models_manual import RazonSocial, Institucion
 
 def demostrar_modelos_manuales(session_sql, session_mysql):
     """Demuestra el uso de modelos definidos manualmente"""

@@ -9,15 +9,24 @@ Administrador_estadisticas/
 ├── README.md
 ├── src/
 │   ├── __init__.py
+│   ├── crud/
+│   │   ├── actividades.py
+│   │   ├── instituciones.py
+│   │   ├── sedes.py
 │   ├── database/
 │   │   ├── __init__.py
 │   │   ├── conexiones.py
-│   │   ├── models_manual.py
 │   ├── demo/
 │   │   ├── __init__.cpython-313.pyc
 │   │   ├── __init__.py
 │   │   ├── demo_manual.py
 │   ├── main.py
+│   ├── models/
+│   │   ├── models_manual.py
+│   │   ├── models_orm.py
+│   │   ├── shemas.py
+│   ├── routers/
+│   │   ├── actividades.py
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   ├── generate_readme.py

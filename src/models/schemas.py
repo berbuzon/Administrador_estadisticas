@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from typing import Optional
+
 
 # -------- ACTIVIDAD --------
 class ActividadOut(BaseModel):
@@ -18,8 +20,8 @@ class InstitucionOut(BaseModel):
 # -------- SEDE --------
 class SedeOut(BaseModel):
     id: int
-    nombre: str
-    direccion: str
-    id_institucion: int
+    valor: str
+    direccion: Optional[str] = None
+    institucion_id: int
     class Config:
         from_attributes = True

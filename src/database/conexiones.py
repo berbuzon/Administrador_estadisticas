@@ -17,7 +17,7 @@ def conectar_sqlserver():
 def conectar_mysql():
     engine = create_engine(
         f"mysql+pymysql://{MySQLConfig.USER}:{MySQLConfig.PASSWORD}"
-        f"@{MySQLConfig.HOST}/{MySQLConfig.DB}",
+        f"@{MySQLConfig.HOST}:3306/{MySQLConfig.DB}",
         pool_size=5,
         pool_recycle=3600,
         connect_args={
