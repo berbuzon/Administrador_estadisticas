@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from src.models.models_orm import VistaActividad
+
 from src.database.conexiones import get_db
 from src.reports.adolescentes import (
     total_adolescentes,
@@ -60,3 +62,25 @@ def _edad(db: Session = Depends(get_db)):
 def _genero(db: Session = Depends(get_db)):
     datos = adolescentes_por_genero(db)
     return [{"genero": fila[0], "cantidad": fila[1]} for fila in datos]
+
+@router.get("/actividad-detalle")
+def actividad_detalle(db: Session = Depends(get_db)):
+    """
+    Devuelve adolescentes confirmados con actividad e institución
+    (una fila por adolescente)
+    """
+    resultados = (
+        db.query(
+            VistaActividad.Actividad.label("actividad"),
+            VistaActividad.Institucion.label("institucion")
+        )
+        .all()
+    )
+
+    return [
+        {
+            "actividad": r.actividad,
+            "institucion": r.institucion
+        }
+        for r in resultados
+    ]

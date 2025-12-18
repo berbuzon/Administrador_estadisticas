@@ -8,3 +8,18 @@ def get_adolescentes_por_actividad() -> pd.DataFrame:
     r = requests.get(f"{API_BASE_URL}/reportes/actividad/", timeout=TIMEOUT)
     r.raise_for_status()
     return pd.DataFrame(r.json())
+
+def get_actividad_detalle() -> pd.DataFrame:
+    """
+    Devuelve adolescentes confirmados con actividad e institución
+    (sin agregación)
+    Returns:
+        pd.DataFrame
+    """
+    r = requests.get(
+        f"{API_BASE_URL}/reportes/actividad-detalle/",
+        timeout=TIMEOUT
+    )
+    r.raise_for_status()
+    return pd.DataFrame(r.json())
+
